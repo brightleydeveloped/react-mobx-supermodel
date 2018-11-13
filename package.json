@@ -1,0 +1,33 @@
+{
+  "name": "react-mobx-supermodel",
+  "version": "0.8.0",
+  "description": "React collection and model using mobx, axios",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brightleydeveloped/react-mobx-supermodel.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "model",
+    "collection"
+  ],
+  "author": "Brightley Developed (brightleydeveloped.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brightleydeveloped/react-mobx-supermodel/issues"
+  },
+  "homepage": "https://github.com/brightleydeveloped/react-mobx-supermodel#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "node-uuid": "^1.4.8",
+    "universal-localstorage": "^1.0.2"
+  }
+}
