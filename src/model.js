@@ -1,11 +1,19 @@
 import {extendObservable, action, toJS, computed} from 'mobx';
 import API from './API';
 import fromJS from './utils/from-js';
+import uuid from 'uuid';
 
 class Model {
     options() { return { baseUrl: '', basePath: '', resource: '' } };
 
     fields() { return {} };
+
+    // override resource to reference a non-unique resource
+    resource() { console.warn("Using unique resource id. You should override resource() on this model."); return uuid.v4(); }
+
+    key() {
+        return this.resource() + this.id;
+    }
 
     constructor(_options = {}) {
         this._options = Object.assign({}, this.options(), _options);
@@ -13,6 +21,7 @@ class Model {
 
         extendObservable(this, Object.assign({}, {
             id: '',
+            error: '',
             load: action(this.loadItem.bind(this)),
             fetch: action(this.fetchItem.bind(this)),
             save: action(this.saveItem.bind(this))
@@ -48,7 +57,6 @@ class Model {
         const api = new API();
 
         if (!this.loading) {
-            debugger
             return this.loading = api.makeRequest({
                 method: "get",
                 url: this.getURL({ id: this.id, path: options.path }),
@@ -90,10 +98,8 @@ class Model {
             ...options
         })
             .then((response) => {
-                if(response.data.success) {
-                    if (response.data) {
-                        this.fromJS(this.getDataFromResponse(response));
-                    }
+                if(response.data) {
+                    this.fromJS(this.getDataFromResponse(response));
                 } else {
                     this.error = response.data.message;
                 }
