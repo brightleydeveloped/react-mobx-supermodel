@@ -1,6 +1,6 @@
 {
   "name": "react-mobx-supermodel",
-  "version": "0.8.5",
+  "version": "0.8.6",
   "description": "React collection and model using mobx, axios",
   "main": "index.js",
   "scripts": {

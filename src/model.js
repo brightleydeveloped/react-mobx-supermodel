@@ -45,9 +45,9 @@ class Model {
                 path = options.path;
             }
         } else if (options.id) {
-            path = this._options.basePath + '/' + this._options.resource + '/' + options.id;
+            path = this._options.basePath + '/' + this.resource() + '/' + options.id;
         } else {
-            path = this._options.basePath + '/' + this._options.resource;
+            path = this._options.basePath + '/' + this.resource();
         }
 
         return this._options.baseUrl + '/' + path;
