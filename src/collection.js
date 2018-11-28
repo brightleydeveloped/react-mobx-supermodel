@@ -37,6 +37,10 @@ class Collection {
         };
     }
 
+    headers() {
+        return {};
+    }
+
     fetch(options = {}) {
         const model = new this.Model();
         const api = model.getAPI();
@@ -49,6 +53,7 @@ class Collection {
             return this.loading = api.makeRequest({
                 method: "get",
                 url,
+                headers: this.headers(),
                 ...options
             })
                 .then((response) => {

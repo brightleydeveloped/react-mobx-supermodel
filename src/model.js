@@ -15,6 +15,10 @@ class Model {
         return this.resource() + this.id;
     }
 
+    headers() {
+        return {};
+    }
+
     constructor(_options = {}) {
         this._options = Object.assign({}, this.options(), _options);
         this._fields = Object.assign({}, this.fields(), _options.fields || {});
@@ -60,6 +64,7 @@ class Model {
             return this.loading = api.makeRequest({
                 method: "get",
                 url: this.getURL({ id: this.id, path: options.path }),
+                headers: this.headers(),
                 ...options
             })
                 .then((response) => {
@@ -91,6 +96,7 @@ class Model {
         return api.makeRequest({
             url: this.getURL({ id: this.id, path: options.path }),
             method: this.id ? 'put': 'post',
+            headers: this.headers(),
             data: options.data || toJS(this),
             ...options
         })
