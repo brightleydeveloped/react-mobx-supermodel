@@ -64,10 +64,7 @@ class Model {
             })
                 .then((response) => {
                     this.loading = false;
-                    let data = this.getDataFromResponse(response);
-                    if(data) {
-                        this.fromJS(data);
-                    }
+                    this.fromJS(this.getDataFromResponse(response));
                     return this;
                 });
         } else {
@@ -98,11 +95,7 @@ class Model {
             ...options
         })
             .then((response) => {
-                if(response.data) {
-                    this.fromJS(this.getDataFromResponse(response));
-                } else {
-                    this.error = response.data.message;
-                }
+                this.fromJS(this.getDataFromResponse(response));
                 return this;
             })
     }
