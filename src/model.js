@@ -36,16 +36,10 @@ class Model {
         return new API();
     }
 
-    getURL(options = { id: '', path: '' }) {
+    getURL() {
         let path = '';
-        if(options.path) {
-            if(options.path[0] !== '/') {
-                path = this._options.basePath + '/' + options.path;
-            } else {
-                path = options.path;
-            }
-        } else if (options.id) {
-            path = this._options.basePath + '/' + this.resource() + '/' + options.id;
+        if (this.id) {
+            path = this._options.basePath + '/' + this.resource() + '/' + this.id;
         } else {
             path = this._options.basePath + '/' + this.resource();
         }
@@ -63,7 +57,7 @@ class Model {
         if (!this.loading) {
             return this.loading = api.makeRequest({
                 method: "get",
-                url: this.getURL({ id: this.id, path: options.path }),
+                url: this.getURL(),
                 headers: this.headers(),
                 ...options
             })
