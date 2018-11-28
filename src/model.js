@@ -88,7 +88,7 @@ class Model {
         let method = "post";
 
         return api.makeRequest({
-            url: this.getURL({ id: this.id, path: options.path }),
+            url: this.getURL(),
             method: this.id ? 'put': 'post',
             headers: this.headers(),
             data: options.data || toJS(this),
