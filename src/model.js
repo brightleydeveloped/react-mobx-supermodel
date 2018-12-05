@@ -36,9 +36,12 @@ class Model {
         return new API();
     }
 
-    getURL() {
+    getURL(options = { path: '' }) {
         let path = '';
-        if (this.id) {
+
+        if(options.path) {
+            path = options.path;
+        } if (this.id) {
             path = this._options.basePath + '/' + this.resource() + '/' + this.id;
         } else {
             path = this._options.basePath + '/' + this.resource();
@@ -57,7 +60,7 @@ class Model {
         if (!this.loading) {
             return this.loading = api.makeRequest({
                 method: "get",
-                url: this.getURL(),
+                url: this.getURL(options),
                 headers: this.headers(),
                 ...options
             })
@@ -88,7 +91,7 @@ class Model {
         let method = "post";
 
         return api.makeRequest({
-            url: this.getURL(),
+            url: this.getURL(options),
             method: this.id ? 'put': 'post',
             headers: this.headers(),
             data: options.data || toJS(this),

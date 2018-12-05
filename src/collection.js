@@ -44,7 +44,7 @@ class Collection {
     fetch(options = {}) {
         const model = new this.Model();
         const api = model.getAPI();
-        let url = model.getURL();
+        let url = model.getURL(options);
 
 
         if (this.loading !== null) {
