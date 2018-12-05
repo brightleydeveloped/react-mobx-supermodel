@@ -41,7 +41,7 @@ class Model {
 
         if(options.path) {
             path = options.path;
-        } if (this.id) {
+        } else if (this.id) {
             path = this._options.basePath + '/' + this.resource() + '/' + this.id;
         } else {
             path = this._options.basePath + '/' + this.resource();
