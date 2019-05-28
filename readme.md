@@ -75,3 +75,62 @@ const users = new UserCollection();
 // that then is stored in a map based on ID of the model
 users.fetch();
 ```
+
+# Usage in your Views
+
+```javascript
+import React, { Component } from 'react';
+import { observer } from 'mobx-react';
+import { Model, Collection } from 'react-mobx-supermodel';
+
+class Comment extends Model {
+    options() { 
+        return {
+            baseUrl: 'https://<api-server-url>',
+            basePath: '/api/v1',
+            resource: 'comments'
+        }
+    }
+    
+    fields() {
+        return {
+            title: '',
+            description: '',
+            created_at: new Date()
+        };
+    }
+}
+
+class Comments extends Collection {
+   static Model = Comment;
+}
+
+export default observer(class CustomView extends Component {
+ constructor(props, context) {
+   super(props, context);
+   
+   this.collection = new Comments();
+ }
+ 
+ componentDidMount() {
+   this.collection.fetch();
+ }
+ 
+ // In react-native, use Views and Text instead of divs
+ render() {
+   return (
+     <div>
+      {this.collection.map((model) => {
+       return (
+         <div>
+           <div>{model.title}</div>
+           <div>{model.description}</div>
+           <div>{model.created_at}</div>
+         </div>
+       )
+      })}
+     </div>
+   )
+ }
+});
+
