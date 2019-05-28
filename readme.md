@@ -67,7 +67,8 @@ export class UserCollection extends Model {
 
 // somewhere else
 const users = new UserCollection();
-// fetches users from /api/v1/user - which is bringing back and array of results or data, 
+// fetches users from /api/v1/user - which is bringing back an array of results or data
+// (both keys are checked on the response's payload)
 // that then is stored in a map based on ID of the model
 users.fetch();
 ```
