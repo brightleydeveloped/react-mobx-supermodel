@@ -33,10 +33,12 @@ export class User extends Model {
 // somewhere else
 
 
-// this will make a request to https://<api-server-url>/api/v1/user/:id
+
 // to fetch one model from the server
 const user = new User();
 user.id = 'some-uuid';
+
+// this will make a GET request to https://<api-server-url>/api/v1/user/some-uuid
 user.fetch();
 
 // or, you can define the id as an option
@@ -45,11 +47,12 @@ const user = new User({
         id: 'some-uuid'
     }
 });
+// this makes a GET request to https://<api-server-url>/api/v1/user/some-uuid 
 user.fetch();
 
 
-// to save, will make a POST request to https://<api-server-url>/api/v1/user
-// or a PUT request to the https://<api-server-url>/api/v1/user/:id if id is set
+// This makes a POST request to https://<api-server-url>/api/v1/user
+// or a PUT request to the https://<api-server-url>/api/v1/user/some-uuid if id is set, as it is above
 user.save()
 ```
 
