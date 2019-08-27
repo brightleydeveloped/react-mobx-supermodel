@@ -1,6 +1,6 @@
 {
   "name": "react-mobx-supermodel",
-  "version": "0.8.82",
+  "version": "0.8.83",
   "description": "React collection and model using mobx, axios",
   "main": "index.js",
   "scripts": {
@@ -26,10 +26,10 @@
     "jest": "^23.6.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "mobx": "^5.6.0",
-    "react-native-storage": "^0.2.3",
+    "axios": "^0.18.1",
+    "mobx": "^5.13.0",
+    "react-native-storage": "^0.2.4",
     "universal-localstorage": "^1.0.2",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.3"
   }
 }
