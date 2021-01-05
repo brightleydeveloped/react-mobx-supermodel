@@ -26,7 +26,7 @@
     "jest": "^23.6.0"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "mobx": "^5.13.0",
     "react-native-storage": "^0.2.4",
     "universal-localstorage": "^1.0.2",
